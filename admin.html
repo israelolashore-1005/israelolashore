@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#09090b" />
+  <title>Portfolio Admin | Israel Olashore</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/admin-yAgaMnOL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/projects--nsjy0Ca.js">
+  <link rel="stylesheet" crossorigin href="/assets/projects-C1eewGw4.css">
+  <link rel="stylesheet" crossorigin href="/assets/admin-AK2-tBoO.css">
+</head>
+<body class="admin-body">
+  <div class="site-loader" id="site-loader" role="status" aria-label="Loading portfolio admin">
+    <div class="loader-mark">
+      <span class="loader-ring ring-one"></span>
+      <span class="loader-ring ring-two"></span>
+      <img src="/assets/logo.png" alt="" width="92" height="92" />
+    </div>
+    <p>Securing admin<span class="loading-dots" aria-hidden="true"></span></p>
+    <div class="loader-track"><span></span></div>
+  </div>
+
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <main class="admin-auth-shell" id="admin-auth-shell" hidden>
+    <section class="admin-login-card" aria-labelledby="admin-login-title">
+      <a class="login-brand" href="/" aria-label="Back to Israel Olashore portfolio">
+        <img src="/assets/logo.png" alt="" width="68" height="68" />
+      </a>
+      <p class="eyebrow">Restricted access</p>
+      <h1 id="admin-login-title">Admin sign in</h1>
+      <p class="login-intro">Enter the administrator email and password to manage published portfolio websites.</p>
+
+      <form id="admin-login-form" class="admin-form login-form" autocomplete="on">
+        <label>
+          <span>Admin email</span>
+          <input id="admin-email" name="email" type="email" autocomplete="username" placeholder="admin@example.com" required />
+        </label>
+        <label>
+          <span>Password</span>
+          <div class="password-field">
+            <input id="admin-password" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required />
+            <button id="toggle-password" class="password-toggle" type="button" aria-label="Show password">Show</button>
+          </div>
+        </label>
+        <button id="admin-login-button" class="btn btn-primary full" type="submit">Sign in securely</button>
+        <p class="admin-form-message" id="login-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="login-security-note">
+        <strong>Protected admin</strong>
+        <p>Credentials are validated on the server. The password is never stored in the browser, and authenticated sessions use an HttpOnly cookie.</p>
+      </div>
+      <a class="back-home-link" href="/">← Back to portfolio</a>
+    </section>
+  </main>
+
+  <div id="admin-app" hidden>
+    <header class="admin-header">
+      <div class="container admin-nav">
+        <a class="brand" href="/" aria-label="Back to Israel Olashore portfolio">
+          <img class="brand-logo" src="/assets/logo.png" alt="" width="44" height="44" />
+          <span class="brand-copy"><strong>Portfolio Admin</strong><small>Israel Olashore</small></span>
+        </a>
+        <div class="admin-nav-actions">
+          <button class="btn btn-secondary compact" id="admin-logout" type="button">Log out</button>
+          <a class="btn btn-secondary compact" href="/">← Portfolio</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <section class="container admin-intro">
+        <div>
+          <p class="eyebrow">Project manager</p>
+          <h1>Manage portfolio websites.</h1>
+          <p>Add a website once and it appears automatically in the live project browser. Classify it as a client project or demo, assign a category, preview it here, or delete it.</p>
+        </div>
+        <div class="admin-stat-grid" aria-label="Portfolio statistics">
+          <article><strong id="admin-total">0</strong><span>Total</span></article>
+          <article><strong id="admin-client">0</strong><span>Client</span></article>
+          <article><strong id="admin-demo">0</strong><span>Demo</span></article>
+        </div>
+      </section>
+
+      <section class="container admin-layout">
+        <aside class="admin-panel add-panel">
+          <div class="admin-panel-heading">
+            <p class="eyebrow">Add project</p>
+            <h2>Publish a website</h2>
+          </div>
+
+          <form id="project-form" class="admin-form">
+            <label>
+              <span>Website link <b>*</b></span>
+              <input id="website-url" name="url" type="text" inputmode="url" placeholder="https://example.com" required />
+              <small>https:// is added automatically if you omit it.</small>
+            </label>
+
+            <label>
+              <span>Project name</span>
+              <input id="project-name" name="title" type="text" placeholder="Optional — generated from the domain" />
+            </label>
+
+            <div class="admin-field-row">
+              <label>
+                <span>Project type <b>*</b></span>
+                <select id="project-kind" name="type" required>
+                  <option value="Client project">Client project</option>
+                  <option value="Demo concept">Demo concept</option>
+                </select>
+              </label>
+              <label>
+                <span>Category <b>*</b></span>
+                <input id="project-category-input" name="category" type="text" placeholder="e.g. E-commerce" required />
+              </label>
+            </div>
+
+            <label>
+              <span>Description</span>
+              <textarea id="project-description-input" name="description" rows="5" placeholder="Short summary of the website and what you built."></textarea>
+            </label>
+
+            <button class="btn btn-primary full" type="submit">Add to portfolio <span aria-hidden="true">↗</span></button>
+            <p class="admin-form-message" id="admin-form-message" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="admin-storage-note">
+            <strong>Server-managed projects</strong>
+            <p>Additions and deletions now go through the authenticated server API and are saved in the project data file, so the public portfolio updates for all visitors.</p>
+          </div>
+        </aside>
+
+        <section class="admin-projects-section" aria-labelledby="managed-projects-title">
+          <div class="admin-projects-heading">
+            <div>
+              <p class="eyebrow">Published websites</p>
+              <h2 id="managed-projects-title">Current projects</h2>
+            </div>
+            <p id="project-count-label">0 projects</p>
+          </div>
+          <div class="admin-project-list" id="admin-project-list"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="admin-toast" id="admin-toast" role="status" aria-live="polite"></div>
+</body>
+</html>
