@@ -146,7 +146,36 @@ button { color: inherit; }
 .projects-section { background: linear-gradient(180deg, transparent, rgba(255,255,255,.015), transparent); }
 .project-browser { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; background: rgba(14,16,20,.82); box-shadow: var(--shadow); }
 .project-sidebar { border-right: 1px solid var(--line); background: rgba(255,255,255,.012); }
-.project-tab { width: 100%; min-height: 98px; display: grid; grid-template-columns: 30px 1fr; gap: .8rem; align-items: start; padding: 1.15rem 1.1rem; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: inherit; text-align: left; cursor: pointer; transition: background .2s ease; }
+.project-tabs {
+  display: flex;
+  gap: 12px;
+
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  flex-wrap: nowrap;
+
+  padding-bottom: 10px;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.project-tabs > * {
+  flex: 0 0 auto;
+}
+.project-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.project-tabs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.project-tabs::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
 .project-tab:last-child { border-bottom: 0; }
 .project-tab:hover { background: rgba(255,255,255,.025); }
 .project-tab.active { background: linear-gradient(90deg, rgba(85,230,165,.08), transparent); box-shadow: inset 2px 0 0 var(--emerald); }
