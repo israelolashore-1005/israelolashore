@@ -290,32 +290,58 @@ button { color: inherit; }
 
 .projects-section { background: linear-gradient(180deg, transparent, rgba(255,255,255,.015), transparent); }
 
-.project-browser { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; background: rgba(14,16,20,.82); box-shadow: var(--shadow); }
+.project-browser {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: 0;
+  height: 720px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(14,16,20,.82);
+  box-shadow: var(--shadow);
+}
 
 .project-sidebar {
-  position: relative;
   min-width: 0;
   min-height: 0;
-  overflow: hidden;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   border-right: 1px solid var(--line);
   background: rgba(255,255,255,.012);
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.25) transparent;
 }
 
 /* Desktop: keep the original left-side stacked project tabs,
    but let the list scroll independently when there are many projects. */
 .project-tabs {
-  position: absolute;
-  inset: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,.22) transparent;
+  min-height: max-content;
+}
+
+
+.project-sidebar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.project-sidebar::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.015);
+}
+
+.project-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.25);
+  border-radius: 999px;
+}
+
+.project-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(85,230,165,.5);
 }
 
 .project-tab {
@@ -334,24 +360,6 @@ button { color: inherit; }
   text-align: left;
   cursor: pointer;
   transition: background .2s ease, box-shadow .2s ease;
-}
-
-.project-tabs::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.project-tabs::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.project-tabs::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,.22);
-  border-radius: 999px;
-}
-
-.project-tabs::-webkit-scrollbar-thumb:hover {
-  background: rgba(85,230,165,.45);
 }
 
 .project-tab:last-child { border-bottom: 0; }
@@ -378,7 +386,12 @@ button { color: inherit; }
   overflow-wrap: anywhere;
 }
 
-.preview-panel { min-width: 0; }
+.preview-panel {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 54px minmax(0, 1fr) auto;
+}
 
 .browser-bar { height: 54px; display: grid; grid-template-columns: 90px 1fr 90px; align-items: center; gap: 1rem; padding: 0 1rem; border-bottom: 1px solid var(--line); }
 
@@ -394,7 +407,17 @@ button { color: inherit; }
 
 .device-btn.active { background: rgba(255,255,255,.06); color: var(--emerald); }
 
-.iframe-stage { position: relative; height: 520px; display: flex; justify-content: center; align-items: stretch; overflow: hidden; background: #050607; transition: padding .25s ease; }
+.iframe-stage {
+  position: relative;
+  min-height: 0;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+  background: #050607;
+  transition: padding .25s ease;
+}
 
 .iframe-stage iframe { width: 100%; height: 100%; border: 0; background: white; transition: width .25s ease, border-radius .25s ease; z-index: 2; }
 
@@ -640,10 +663,14 @@ button { color: inherit; }
 
   .split-heading { display: grid; gap: 1rem; }
 
-  .project-browser { grid-template-columns: 1fr; }
+  .project-browser {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
 
   .project-sidebar {
-    position: static;
+    height: auto;
     min-width: 0;
     min-height: auto;
     overflow: hidden;
@@ -653,8 +680,6 @@ button { color: inherit; }
 
   /* Tablet/mobile: switch the same tabs to a horizontal swipe row. */
   .project-tabs {
-    position: static;
-    inset: auto;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -662,6 +687,8 @@ button { color: inherit; }
     overflow-y: hidden;
     scroll-snap-type: x proximity;
     scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.25) transparent;
+    -webkit-overflow-scrolling: touch;
   }
 
   .project-tab {
@@ -832,7 +859,7 @@ button { color: inherit; }
 
 .project-browser:fullscreen .iframe-stage { height: auto; min-height: 0; }
 
-.project-browser.expanded-fallback { position: fixed; inset: 12px; z-index: 4500; grid-template-columns: 330px minmax(0,1fr); border-radius: 18px; box-shadow: 0 0 0 20px rgba(0,0,0,.78), 0 30px 100px rgba(0,0,0,.65); }
+.project-browser.expanded-fallback { position: fixed; height: auto; inset: 12px; z-index: 4500; grid-template-columns: 330px minmax(0,1fr); border-radius: 18px; box-shadow: 0 0 0 20px rgba(0,0,0,.78), 0 30px 100px rgba(0,0,0,.65); }
 
 .project-browser.expanded-fallback .preview-panel { display: grid; grid-template-rows: 54px minmax(0,1fr) auto; max-height: calc(100vh - 24px); }
 
